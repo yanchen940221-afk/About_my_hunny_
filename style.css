@@ -147,7 +147,7 @@ body{
 
 .subline.big{
   font-size: 20px;      /* 你現在用固定值先穩 */
-  font-weight: 300;     /* 稍微細 */
+  font-weight: ㄉ00;     /* 稍微細 */
   letter-spacing: .08em;
   line-height: 1.02;
 
@@ -166,10 +166,20 @@ body{
      0  1px 0 #000;
 }
 
-/* 嘉嘉篇 */
 .subline.small{
-  font-size: 22px;
-  font-weight: 700;
-  opacity: .95;
+  font-size: 44px;     /* ✅ 很大：你可再往上加 */
+  font-weight: 600;    /* ✅ 稍微細一點 */
+  letter-spacing: .10em;
+  line-height: 1.02;
+
+  /* ✅ 不用厚陰影造成變粗 */
+  text-shadow: none;
+
+  /* ✅ 跟上面一致：細描邊（可調 0.6～1px） */
+  -webkit-text-stroke: 0.8px #000;
+  paint-order: stroke fill;
+
+  opacity: 1;
 }
+
 
