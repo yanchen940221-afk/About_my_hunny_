@@ -48,34 +48,26 @@
       align-items:stretch;
     }
 
-    .spriteBox{
-      height:180px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:
-        linear-gradient(transparent 15px, rgba(0,0,0,.08) 16px),
-        linear-gradient(90deg, transparent 15px, rgba(0,0,0,.08) 16px);
-      background-size:16px 16px;
-      border:4px solid var(--gb0);
-    }
+      .spriteBox{
+  height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  /* 下面這行是重點 */
+  overflow:hidden;
+
+  background:
+    linear-gradient(transparent 15px, rgba(0,0,0,.08) 16px),
+    linear-gradient(90deg, transparent 15px, rgba(0,0,0,.08) 16px);
+  background-size:16px 16px;
+  border:4px solid var(--gb0);
+}
+
 
     /* 用純 CSS 做兩個「像素角色」(不靠圖片也很像) */
-    .sprite{
-      width:96px; height:96px;
-      image-rendering: pixelated;
-      background:var(--gb1);
-      box-shadow:
-        16px 16px 0 var(--gb1),
-        32px 16px 0 var(--gb1),
-        48px 16px 0 var(--gb1),
-        16px 32px 0 var(--gb1),
-        32px 32px 0 var(--gb2),
-        48px 32px 0 var(--gb1),
-        16px 48px 0 var(--gb1),
-        32px 48px 0 var(--gb1),
-        48px 48px 0 var(--gb1);
-      transform:scale(1.8);
+     .sprite{ transform:scale(1.1); }
+.sprite.opponent{ transform:scale(1.0); }
+
     }
     .sprite.opponent{
       transform:scale(1.6) rotate(0deg);
@@ -241,7 +233,7 @@
 
         <!-- 右上：對手 sprite -->
         <div class="spriteBox">
-          <div class="sprite opponent" aria-label="opponent"></div>
+          <img class="spriteImg" src="bf.png" alt="opponent">
         </div>
 
         <!-- 左下：自己 sprite -->
@@ -519,3 +511,4 @@
 </script>
 </body>
 </html>
+
