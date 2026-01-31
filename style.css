@@ -228,6 +228,10 @@ body{
   opacity: .8 !important;
   mix-blend-mode: multiply !important;
 }
+/* 外框外面的背景：強制全黑 */
+html, body{
+  background: #000 !important;
+}
 
 
 
