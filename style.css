@@ -76,8 +76,23 @@ body{
 }
 
 .subline{
-  font-weight: 900;
-  letter-spacing: .08em;
+ /* 原本：logo-top 的大小不用動 */
+
+/* ✅ 改這裡：讓「神奇寶貝收服」更大、稍微細一點 */
+.subline.big{
+  /* 比 logo-top 更大：範圍拉高 */
+  font-size: clamp(18px, 4.2vw, 28px);
+
+  /* 稍微細一點：從 900 降到 800/700 都可以 */
+  font-weight: 800;
+
+  /* 外框陰影也稍微收斂，避免看起來太厚 */
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000,
+     0px  2px 0 #000;
 }
 
 .subline.big{
