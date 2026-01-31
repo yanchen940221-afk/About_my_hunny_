@@ -122,13 +122,13 @@ body{
   width: min(55%, 220px);
   max-height: 100%;
   object-fit: contain;
-  margin-top: -60px;
+  margin-top: -80px;
 
   image-rendering: pixelated;
 
   /* 轉成 GB 綠色調（不用真的改圖檔） */
   filter:
-    grayscale(1)
+    grayscale(2)
     sepia(1)
     hue-rotate(65deg)
     saturate(2.4)
