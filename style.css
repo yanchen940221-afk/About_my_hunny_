@@ -1,19 +1,27 @@
 :root{
-  --ink:#111;
-  --paper:#f2f2f2;
-  --paper2:#e6e6e6;
-  --shadow:#000;
+  /* Game Boy 綠色系（4 階） */
+  --gb0:#e0f8cf; /* 最亮 */
+  --gb1:#86c06c;
+  --gb2:#306850;
+  --gb3:#071821; /* 最暗 */
+
+  --ink: var(--gb3);
+  --paper: var(--gb0);
+  --paper2: #cfe8b8;
+  --shadow: var(--gb3);
 }
+
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 
 body{
   margin:0;
-  background: radial-gradient(circle at 30% 20%, #ffffff 0%, #e9e9e9 55%, #dcdcdc 100%);
+  background: var(--gb1);
   font-family: "Noto Sans TC", system-ui, -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
-  color:var(--ink);
+  color: var(--gb3);
 }
+
 
 .page{
   min-height:100%;
@@ -33,18 +41,19 @@ body{
   container-type: inline-size;
   width:min(92vw, 520px);
   aspect-ratio: 160 / 144;
-  border:10px solid #111;
-  border-radius:14px;
-  background: linear-gradient(180deg, #f2f2f2 0%, #f2f2f2 55%, #e6e6e6 56%, #e6e6e6 100%);
+
+  background: var(--gb0);
+  border: 8px solid var(--gb3);
+  border-radius: 8px;
   position:relative;
   overflow:hidden;
 
-  image-rendering: pixelated;
+  /* 內框 */
   box-shadow:
-    0 18px 45px rgba(0,0,0,.25),
-    inset 0 0 0 2px rgba(255,255,255,.35);
-  filter: contrast(1.25) brightness(1.03);
+    inset 0 0 0 4px var(--gb2),
+    0 18px 45px rgba(0,0,0,.25);
 }
+
 
 .title{
   padding:10px 10px 4px;
@@ -110,20 +119,37 @@ body{
   width: min(55%, 220px);
   max-height: 100%;
   object-fit: contain;
-  filter: grayscale(1) contrast(1.2);
+
+  image-rendering: pixelated;
+
+  /* 轉成 GB 綠色調（不用真的改圖檔） */
+  filter:
+    grayscale(1)
+    sepia(1)
+    hue-rotate(65deg)
+    saturate(2.4)
+    contrast(1.25)
+    brightness(1.05);
 }
 
-/* ✅ Enter 最底 */
+
 .hint{
   position:absolute;
   left:10px;
   right:10px;
   bottom:10px;
-  text-align:center;
+
+  padding:10px 12px;
+  background: var(--gb0);
+  border: 4px solid var(--gb3);
+  box-shadow: inset 0 0 0 3px var(--gb2);
+
+  text-align:left;
   font-weight:800;
-  font-size: clamp(10px, 2vw, 14px);
-  letter-spacing:.08em;
+  font-size: clamp(10px, 2.2vw, 14px);
+  letter-spacing:.06em;
 }
+
 
 .blink{
   display:inline-block;
@@ -138,36 +164,36 @@ body{
   position:absolute;
   inset:0;
 
-  /* ✅ 更明顯掃描線 + 像素格 + 顆粒抖動 */
   background:
-    /* 掃描線（更粗更明顯） */
+    /* 掃描線（像你圖那種） */
     repeating-linear-gradient(
       to bottom,
-      rgba(0,0,0,.10) 0px,
-      rgba(0,0,0,.10) 1px,
-      rgba(255,255,255,0) 2px,
-      rgba(255,255,255,0) 5px
+      rgba(7,24,33,.10) 0px,
+      rgba(7,24,33,.10) 1px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0) 4px
     ),
-    /* 像素格網（營造馬賽克格子感） */
-    repeating-linear-gradient(
-      to right,
-      rgba(0,0,0,.05) 0px,
-      rgba(0,0,0,.05) 1px,
-      rgba(255,255,255,0) 2px,
-      rgba(255,255,255,0) 6px
-    ),
-    /* 顆粒/抖動（dither感） */
+    /* 像素抖動（dither） */
     repeating-linear-gradient(
       45deg,
-      rgba(0,0,0,.06) 0px,
-      rgba(0,0,0,.06) 1px,
-      rgba(255,255,255,0) 2px,
-      rgba(255,255,255,0) 4px
+      rgba(7,24,33,.06) 0px,
+      rgba(7,24,33,.06) 1px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0) 5px
+    ),
+    /* 像素格（馬賽克格子感） */
+    repeating-linear-gradient(
+      to right,
+      rgba(7,24,33,.05) 0px,
+      rgba(7,24,33,.05) 1px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0) 6px
     );
 
   mix-blend-mode:multiply;
-  opacity:.7;
+  opacity:.75;
 }
+
 
 
 
