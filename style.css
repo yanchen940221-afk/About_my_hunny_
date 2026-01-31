@@ -194,8 +194,40 @@ body{
       rgba(0,0,0,0) 6px
     );
 
-  mix-blend-mode:multiply;
-  opacity:.75;
+   position:absolute;
+  inset:0;
+  z-index:50;
+  pointer-events:none;
+
+  /* ✅ 抖動(dither) + 掃描線 + 格點 */
+  background:
+    /* 掃描線 */
+    repeating-linear-gradient(
+      to bottom,
+      rgba(7,24,33,.14) 0px,
+      rgba(7,24,33,.14) 1px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0) 4px
+    ),
+    /* 45° 抖動網點（dither感最明顯） */
+    repeating-linear-gradient(
+      45deg,
+      rgba(7,24,33,.12) 0px,
+      rgba(7,24,33,.12) 1px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0) 6px
+    ),
+    /* 像素格（馬賽克格） */
+    repeating-linear-gradient(
+      to right,
+      rgba(7,24,33,.08) 0px,
+      rgba(7,24,33,.08) 1px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0) 8px
+    );
+
+  mix-blend-mode: multiply;
+  opacity: .95;  
 }
 /* === FORCE GAME BOY GREEN (貼在整份 CSS 最底部) === */
 :root{
