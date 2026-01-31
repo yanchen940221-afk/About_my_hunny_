@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>遊戲開始</title>
+  <link rel="stylesheet" href="./style.css?v=world1" />
+</head>
+<body>
+  <div class="page">
+    <div class="gb" style="padding:16px;">
+      <h2 style="margin:0 0 10px 0;">遊戲開始！</h2>
+      <div id="t"></div>
+      <div class="overlay" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <script>
+    const name = localStorage.getItem("playerName") || "玩家";
+    document.getElementById("t").textContent = `你好，${name}！`;
+  </script>
+</body>
+</html>
