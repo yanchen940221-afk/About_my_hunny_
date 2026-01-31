@@ -193,6 +193,37 @@ body{
   mix-blend-mode:multiply;
   opacity:.75;
 }
+/* === FORCE GAME BOY GREEN (貼在整份 CSS 最底部) === */
+:root{
+  --gb0:#e0f8cf !important;
+  --gb1:#86c06c !important;
+  --gb2:#306850 !important;
+  --gb3:#071821 !important;
+
+  --ink: var(--gb3) !important;
+  --paper: var(--gb0) !important;
+  --paper2: #cfe8b8 !important;
+  --shadow: var(--gb3) !important;
+}
+
+body{
+  background: var(--gb1) !important;
+  color: var(--gb3) !important;
+}
+
+.gb{
+  background: var(--gb0) !important;
+  border-color: var(--gb3) !important;
+  box-shadow:
+    inset 0 0 0 4px var(--gb2),
+    0 18px 45px rgba(0,0,0,.25) !important;
+}
+
+/* overlay 顆粒＋掃描線也用綠系 */
+.overlay{
+  opacity: .8 !important;
+  mix-blend-mode: multiply !important;
+}
 
 
 
