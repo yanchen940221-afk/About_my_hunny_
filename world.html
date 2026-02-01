@@ -5,27 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>World</title>
   <link rel="stylesheet" href="./style.css?v=world1" />
-  /* ✅ 隱藏系統游標 */
-html, body, .gb, .gb *{
-  cursor: none !important;
-}
-
-/* ✅ 大像素游標 */
-#bigCursor{
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 64px;              /* 游標大小：64/80/96 自己調 */
-  height: 64px;
-  background: url("./assets/cursor.png") no-repeat center / contain;
-  image-rendering: pixelated;
-  pointer-events: none;
-  z-index: 99999;
-
-  transform: translate(-9999px, -9999px); /* 初始藏起來 */
-  filter: saturate(.75) contrast(1.05);   /* 低彩度+對比 */
-}
-
   <style>
     /* 這頁專用：scene 分成 2/3 戰鬥區 + 1/3 對話框 */
     .gb{
@@ -36,7 +15,7 @@ html, body, .gb, .gb *{
     .scene{
       height: 100%;
       display: grid;
-      grid-template-rows: 2fr 1fr; /* ✅ 2/3 : 1/3 */
+      grid-template-rows: 5fr 1fr; /* ✅ 2/3 : 1/3 */
       gap: 10px;
     }
 
@@ -137,7 +116,23 @@ html, body, .gb, .gb *{
   animation: none !important;
   transform: none !important; /* 如果之前用 transform 做上下飄，也一起重置 */
 }
-
+      html, body, .gb, .gb *{
+    cursor: none !important;
+  }
+  /* ✅ 大像素游標 */
+  #bigCursor{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 64px;
+    height: 64px;
+    background: url("./assets/cursor.png?v=1") no-repeat center / contain;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-9999px, -9999px);
+    filter: saturate(.75) contrast(1.05);
+  }
   </style>
 </head>
 
@@ -311,6 +306,11 @@ window.addEventListener("touchmove", (e) => {
   const t = e.touches[0];
   bigCursor.style.transform = `translate(${t.clientX}px, ${t.clientY}px)`;
 }, {passive:true});
+<link rel="stylesheet" href="./style.css?v=world1" />
+  /* ✅ 隱藏系統游標 */
+html, body, .gb, .gb *{
+  cursor: none !important;
+}
 
 
   </script>
