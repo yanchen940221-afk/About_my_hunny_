@@ -40,13 +40,13 @@
     .player{
       left: 10px;
       bottom: 10px; /* ✅ 戰鬥區底部 = 對話框上方，所以自然「踩在框上面」 */
-      width: min(56cqw, 140px);
+      width: min(56cqw, 360px);
     }
 
     .rival{
       right: 12px;
       top: 12px;
-      width: min(56cqw, 140px);
+      width: min(56cqw, 360px);
       opacity: .95;
     }
 
@@ -283,13 +283,11 @@
   });
 
   // ===== 大鼠標 =====
-  const bigCursor = document.getElementById("bigCursor");
+const bigCursor = document.getElementById("bigCursor");
 
-  window.addEventListener("mousemove", (e) => {
-    const x = e.clientX - 6;
-    const y = e.clientY - 6;
-    bigCursor.style.transform = `translate(${x}px, ${y}px)`;
-  });
+window.addEventListener("mousemove", (e) => {
+  bigCursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px)`;
+});
 
   window.addEventListener("touchstart", (e) => {
     const t = e.touches[0];
@@ -301,6 +299,30 @@
     bigCursor.style.transform = `translate(${t.clientX}px, ${t.clientY}px)`;
   }, {passive:true});
 </script>
+  <!-- 你的 style.css、其他 style 都在上面 -->
+
+<style id="cursorHideCSS">
+  /* World 頁面：整頁都隱藏系統游標（避免移到 gb 外又出現） */
+  html, body, body *{
+    cursor: none !important;
+  }
+
+  /* 大像素游標 */
+  #bigCursor{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 64px;
+    height: 64px;
+    background: url("./assets/cursor.png") no-repeat center / contain;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 2147483647;
+    transform: translate(-9999px, -9999px);
+    filter: saturate(.75) contrast(1.05);
+  }
+</style>
+
 
 
 </body>
